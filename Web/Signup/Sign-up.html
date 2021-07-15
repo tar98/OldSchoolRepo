@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<style>
+			input
+			{
+				background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;
+			}
+		</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style_index.css"/>
+  </head>
+  <body>
+    <div class = "Conteiner" name = "Sign-up">
+			<form action = "php/recap.php" method = "GET" onsubmit = "return check()">
+        <div class="panel panel-default">
+         <div class = "panel-heading">
+            <center>
+              <h2><center>Modulo di Iscrizione</center></h2>
+            </center>  
+         </div>
+         <div class="panel-body">
+          <center>
+							<p>
+							 Tipo Persona
+								<div>
+									<label><input  type="radio" onclick="AorP();" name = "A_or_P" id="PCheck"/>Passeggero</label>
+									<label> <input  type="radio" onclick="AorP();" name = "A_or_P" id="ACheck" checked/>Autista </label>
+								</div>
+							</p>
+              <div>Cognome : <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;"  id = "SURNAME" type = "text" name = "cognome" required></div><br>
+							<div>Nome : <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "NAME" type = "text" name = "nome" required></div><br>
+							<div>Email : <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "E-MAIL" type = "Email" name = "e-mail" required></div><br>
+							<div>Password : <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "PASSWORD" type = "password" name = "password" required></div><br>
+							<div>Telefono : <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "tel" type = "text" name = "telefono" required></div><br>
+							<div>	Data di Nascita : <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "data_ind" type = "date" name = "yyyymmgg"></div><br>
+							<div>Sesso : Maschio<input class = "RadioB" type = "Radio" name = "gender" value = "M"> Femmina <input class = "RadioB" type = "Radio" name = "gender" value = "F"></div><br>
+							<div>Nazionalita : <select style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "combobox" name = "COMBO">
+																<option name = "IT" value = "Italia">Italia</option>
+																<option name = "EN" value = "UK">United Kingdom</option> 
+																<option name = "USA" value = "USA">United States of America</option>
+																<option name = "FRA" value = "France">France</option>
+															 </select></div><br>
+							<div id = "patente">Patente : <input class = "Box" id = "PatA" type = "checkbox" name = "PatenteA" value = "A">Categ. A <input class = "Box" id = "PatB" type = "checkbox" name = "PatenteB" value = "B">Categ. B </div><br>
+              <div id = "scad_patente">Scadenza Patente: <input style = "background: #FFFFFF; color: #000000; font-family: Arial, Corbel, sans-serif; font-size: 16px;" id = "scadp" type = "date" name = "scadenza"></div><br>
+					</center>
+         </div>
+         <div class = "panel-footer">
+					 		<center>
+              		<p>
+                		<button id = "cancel" type = "button" onclick = "back_fun()" value = "Annulla">Chiudi</button>
+                		<button id = "confirm" type = "submit" value = "Conferma">Conferma</button>
+              		</p>
+						 	</center>
+         </div>    
+        </div>
+			</form>
+			<script>
+				function back_fun()
+				{
+					var Win = window.self;
+					Win.location.href = "index.html";
+				}
+				
+				function check()
+				{
+					var Radio = document.getElementsByClassName("RadioB");
+					var Categ = document.getElementsByClassName("Box");
+					var Scad = document.getElementById("scadp");
+					var Born = document.getElementById("data_ind");
+					
+					if(Radio[0].checked == false && Radio[1].checked == false)
+					{
+						alert("Inserire il propio Sesso!");
+						return false;
+					}
+					else if(!Born.value)
+							{
+								alert("Inserire la data di nascita!");
+								return false;
+							}
+							else if(document.getElementById('ACheck').checked)
+									{
+											if(!Scad.value)
+											{
+												alert("Inserire la data di scadenza!");
+												return false;
+											}
+											else if(Categ[0].checked == false && Categ[1].checked == false)
+											{
+												alert("Inserire la propia Patente!");
+												return false;
+											}
+									}
+									else return true;
+				}
+				
+			function AorP()
+			{
+				if(document.getElementById('PCheck').checked)
+				{
+					document.getElementById('patente').style.display = 'none';
+					document.getElementById('scad_patente').style.display = 'none';
+					document.getElementById('PatA').checked = false;
+					document.getElementById('PatB').checked = false;
+				}
+				else
+				{
+					document.getElementById('patente').style.display = 'block';
+					document.getElementById('scad_patente').style.display = 'block';
+				}
+			}
+			</script>
+    </div>
+  </body>
+</html>

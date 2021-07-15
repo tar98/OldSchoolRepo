@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class = "container">
+      <form action = "php/sign_in_out.php" method = "POST" onsubmit = "return check()">
+        <div class="panel panel-default">
+          <div class = "panel-heading">
+            <center>
+              <p>Modulo di Accesso</p>
+            </center>
+          </div>
+          <div class = "panel-body">
+            <center>
+              <p>User <input class = "item" type = "text" name = "user"></p>
+              <p>Password <input class = "item" type = "password" name = "PS"></p>
+							<p>Genere : Autista <input id = "kind1" type = "radio" name = "choose" value = "Autista" checked> Passegero <input id = "kind2" type = "radio" name = "choose" value = "Passegero"></p>
+            </center>
+          </div>
+          <div class = "panel-footer">
+            <center>
+              <input id = "cancel" type = "button" value = "Annulla">
+              <input type = "submit" value = "Login">
+            </center>
+          </div>
+        </div>
+      </form>
+    </div>
+		<script type = "text/javascript">
+    document.getElementById("cancel").onclick = function () {
+        location.href = "index.html";
+    };
+		</script>
+		<script>
+			function check()
+			{
+				var x = document.getElementByClassName("item");
+				if(!(x[0].value) || !(x[1].value))
+					{
+						alert("Errore");
+						return false;
+					}
+				else return true;
+			}
+		</script>
+  </body>
+</html>
