@@ -1,0 +1,4 @@
+*.db
+*.vcxproj
+*.vcxproj.filters
+*.sln
